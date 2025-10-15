@@ -1,0 +1,49 @@
+import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class TreeExample extends JFrame {
+    public TreeExample() {
+        setTitle("JTree Example");
+        setSize(300, 300);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
+
+        DefaultMutableTreeNode parent1 = new DefaultMutableTreeNode("Parent 1");
+        DefaultMutableTreeNode parent2 = new DefaultMutableTreeNode("Parent 2");
+        DefaultMutableTreeNode parent3 = new DefaultMutableTreeNode("Parent 3");
+        DefaultMutableTreeNode parent4 = new DefaultMutableTreeNode("Parent 4");
+
+        DefaultMutableTreeNode child1 = new DefaultMutableTreeNode("Child 1");
+        DefaultMutableTreeNode child2 = new DefaultMutableTreeNode("Child 2");
+        DefaultMutableTreeNode child3 = new DefaultMutableTreeNode("Child 3");
+        DefaultMutableTreeNode child4 = new DefaultMutableTreeNode("Child 4");
+        DefaultMutableTreeNode child5 = new DefaultMutableTreeNode("Child 5");
+        DefaultMutableTreeNode child6 = new DefaultMutableTreeNode("Child 6");
+
+        parent1.add(child1);
+        parent1.add(child2);
+        parent2.add(child3);
+        parent2.add(child4);
+        parent3.add(child5);
+        parent4.add(child6);
+
+        root.add(parent1);
+        root.add(parent2);
+        root.add(parent3);
+        root.add(parent4);
+
+        JTree tree = new JTree(root);
+
+        JScrollPane scrollPane = new JScrollPane(tree);
+
+        add(scrollPane);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new TreeExample().setVisible(true);
+        });
+    }
+}
