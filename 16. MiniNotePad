@@ -1,0 +1,38 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+
+public class MiniNotepad extends JFrame implements ActionListener {
+    JTextArea area;
+    JButton saveBtn;
+
+    MiniNotepad() {
+        setTitle("Mini Notepad");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        area = new JTextArea();
+        add(new JScrollPane(area), BorderLayout.CENTER);
+
+        saveBtn = new JButton("Save to output.txt");
+        saveBtn.addActionListener(this);
+        add(saveBtn, BorderLayout.SOUTH);
+
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("output.txt"))) {
+            bw.write(area.getText());
+            JOptionPane.showMessageDialog(this, "Saved to output.txt");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error saving file");
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(MiniNotepad::new);
+    }
+}
