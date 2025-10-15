@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.io.*;
 public class JFileChooserExample {
     public static void main(String[] args) {
         JFrame frame = new JFrame("JFileChooser Example");
