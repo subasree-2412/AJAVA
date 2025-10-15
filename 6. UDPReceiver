@@ -1,20 +1,18 @@
 import java.net.*; 
 public class UDPReceiver { 
-public static void main(String[] args) { 
-try { 
-DatagramSocket receiverSocket=new 
-DatagramSocket(9876); 
-byte[] receiveBuffer=new byte[1024]; 
-System.out.println("Receiver is waiting for a message...."); 
-DatagramPacket receivePacket=new 
-DatagramPacket(receiveBuffer,receiveBuffer.length); 
-receiverSocket.receive(receivePacket); 
-String receivedData=new 
-String(receivePacket.getData(),0,receivePacket.getLength()); 
-System.out.println("Received Message:" + receivedData); 
-receiverSocket.close(); 
-} catch(Exception e) { 
-System.out.println("Receiver Error:" + e.getMessage()); 
-} 
-} 
+	public static void main(String[] args) { 
+		try { 
+			DatagramSocket receiverSocket=new 
+					DatagramSocket(9876); 
+			byte[] receiveBuffer=new byte[1024]; 
+			System.out.println("Receiver is waiting for a message...."); 
+			DatagramPacket receivePacket=new DatagramPacket(receiveBuffer,receiveBuffer.length); 
+			receiverSocket.receive(receivePacket); 
+			String receivedData=new String(receivePacket.getData(),0,receivePacket.getLength()); 
+			System.out.println("Received Message:" + receivedData); 
+			receiverSocket.close(); 
+			} catch(Exception e) { 
+				System.out.println("Receiver Error:" + e.getMessage()); 
+				} 
+		} 
 }
