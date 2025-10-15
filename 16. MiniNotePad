@@ -3,11 +3,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-public class MiniNotepad extends JFrame implements ActionListener {
+public class MiniNotePad extends JFrame implements ActionListener {
     JTextArea area;
     JButton saveBtn;
 
-    MiniNotepad() {
+    MiniNotePad() {
         setTitle("Mini Notepad");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,6 +33,6 @@ public class MiniNotepad extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(MiniNotepad::new);
+        SwingUtilities.invokeLater(MiniNotePad::new);
     }
 }
