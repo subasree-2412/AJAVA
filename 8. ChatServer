@@ -1,40 +1,35 @@
 import java.net.*; 
 import java.io.*; 
 public class ChatServer { 
- public static void main(String[] args) { 
-  try { 
-   ServerSocket serverSocket=new ServerSocket(5000); 
-   System.out.println("Server started. waiting for client.."); 
-   Socket socket=serverSocket.accept(); 
-   System.out.println("Client Connected."); 
-   BufferedReader input=new BufferedReader(new 
-InputStreamReader(socket.getInputStream())); 
-   PrintWriter output=new PrintWriter(socket.getOutputStream()); 
-   BufferedReader consoleInput=new BufferedReader(new 
-InputStreamReader(System.in)); 
-   String clientMessage,serverMessage; 
-   while(true) { 
-   clientMessage=input.readLine(); 
-   if(clientMessage.equalsIgnoreCase("exit")) { 
-    System.out.println("Client Disconnected."); 
-    break; 
-   } 
-   System.out.println("Client:" + clientMessage); 
-   System.out.println("You(Server):"); 
-   serverMessage=consoleInput.readLine(); 
-   output.println(serverMessage); 
-   if(serverMessage.equalsIgnoreCase("eixt")) { 
-    break; 
-   } 
-                                   } 
-   serverSocket.close(); 
-   socket.close(); 
-  } 
-   catch(IOException e) { 
-    System.out.println("Server Error:" + e.getMessage()); 
-   } 
- 
- 
- } 
- 
-}
+	public static void main(String[] args) { 
+		try { 
+			ServerSocket serverSocket=new ServerSocket(5000); 
+			System.out.println("Server started. waiting for client.."); 
+			Socket socket=serverSocket.accept(); 
+			System.out.println("Client Connected."); 
+			BufferedReader input=new BufferedReader(new InputStreamReader(socket.getInputStream())); 
+			PrintWriter output=new PrintWriter(socket.getOutputStream()); 
+			BufferedReader consoleInput=new BufferedReader(new InputStreamReader(System.in)); 
+			String clientMessage,serverMessage; 
+			while(true) { 
+				clientMessage=input.readLine(); 
+				if(clientMessage.equalsIgnoreCase("exit")) { 
+					System.out.println("Client Disconnected."); 
+					break; 
+					} 
+				System.out.println("Client:" + clientMessage); 
+				System.out.println("You(Server):"); 
+				serverMessage=consoleInput.readLine(); 
+				output.println(serverMessage); 
+				if(serverMessage.equalsIgnoreCase("eixt")) { 
+					break; 
+					} 
+				}
+			serverSocket.close(); 
+			socket.close(); 
+			} 
+		catch(IOException e) { 
+			System.out.println("Server Error:" + e.getMessage()); 
+			} 
+		} 
+	}
