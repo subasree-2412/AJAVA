@@ -1,12 +1,12 @@
 import java.net.*; 
 public class LocalIpAddress { 
-public static void main(String[] args) { 
-try { 
-InetAddress localHost=InetAddress.getLocalHost(); 
-System.out.println("Local Ip Address:" + localHost.getHostAddress()); 
-} catch(UnknownHostException e) { 
-System.out.println("Unable to find the local Ip Address:"); 
-e.printStackTrace(); 
-} 
-} 
+	public static void main(String[] args) { 
+		try { 
+			InetAddress localHost=InetAddress.getLocalHost(); 
+			System.out.println("Local Ip Address:" + localHost.getHostAddress()); 
+			} catch(UnknownHostException e) { 
+				System.out.println("Unable to find the local Ip Address:"); 
+				e.printStackTrace(); 
+				} 
+		} 
 }
