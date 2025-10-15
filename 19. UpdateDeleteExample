@@ -1,0 +1,60 @@
+import java.sql.*;
+import java.util.Scanner;
+public class UpdateDeleteExample {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/college";
+        String user = "root";       
+        String password = "root";  
+        Scanner sc = new Scanner(System.in);
+
+        try {
+           
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection con = DriverManager.getConnection(url, user, password);
+
+           
+            System.out.println("1. Update Record");
+            System.out.println("2. Delete Record");
+            System.out.print("Enter your choice: ");
+            int choice = sc.nextInt();
+
+            if (choice == 1) {
+                
+                System.out.print("Enter Student ID to update: ");
+                int id = sc.nextInt();
+                sc.nextLine(); 
+                System.out.print("Enter new Name: ");
+                String name = sc.nextLine();
+                System.out.print("Enter new Age: ");
+                int age = sc.nextInt();
+                String updateQuery = "UPDATE students SET name=?, age=? WHERE id=?";
+                PreparedStatement pst = con.prepareStatement(updateQuery);
+                pst.setString(1, name);
+                pst.setInt(2, age);
+                pst.setInt(3, id);
+                int rows = pst.executeUpdate();
+                System.out.println(rows + " record(s) updated successfully.");
+            } 
+            else if (choice == 2) {
+                
+                System.out.print("Enter Student ID to delete: ");
+                int id = sc.nextInt();
+
+                String deleteQuery = "DELETE FROM students WHERE id=?";
+                PreparedStatement pst = con.prepareStatement(deleteQuery);
+                pst.setInt(1, id);
+
+                int rows = pst.executeUpdate();
+                System.out.println(rows + " record(s) deleted successfully.");
+            } 
+            else {
+                System.out.println("Invalid choice!");
+            }
+           
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
