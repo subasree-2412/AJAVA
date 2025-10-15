@@ -1,0 +1,19 @@
+import java.net.*; 
+import java.util.*; 
+public class IPAddress { 
+public static void main(String[] args) { 
+Scanner scanner=new Scanner(System.in); 
+System.out.println("Enter the website name:"); 
+String website=scanner.nextLine(); 
+try { 
+InetAddress inetaddress=InetAddress.getByName(website); 
+System.out.println("Ip Address of " + website + " is " + 
+inetaddress.getHostAddress()); 
+} 
+catch(UnknownHostException e) { 
+System.out.println("Unable to find IP Address for the website:" + 
+website); 
+} 
+scanner.close();
+} 
+} 
