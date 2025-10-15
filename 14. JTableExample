@@ -1,0 +1,34 @@
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
+public class JTableExample {
+    public static void main(String[] args) {
+        
+        String[] columnNames = {"ID", "Name", "Course"};
+
+        
+        String[][] data = {
+                {"1", "Rajesh", "Advanced Java"},
+                {"2", "Kumar", "Cloud Computing"},
+                {"3", "Anitha", "Data Structures"},
+                {"4", "John", "Machine Learning"}
+        };
+
+        
+        JTable table = new JTable(data, columnNames);
+
+       
+        JScrollPane scrollPane = new JScrollPane(table);
+
+        
+        JFrame frame = new JFrame("JTable Example");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 200);
+
+        
+        frame.add(scrollPane);
+        
+        frame.setVisible(true);
+    }
+}
