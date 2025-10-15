@@ -1,0 +1,35 @@
+import java.net.*; 
+import java.io.*; 
+public class ChatClient { 
+ 
+ public static void main(String[] args) { 
+  try { 
+   Socket socket=new Socket(); 
+   System.out.println("Connected to server."); 
+   BufferedReader input=new BufferedReader(new 
+InputStreamReader(socket.getInputStream())); 
+   PrintWriter output=new PrintWriter(socket.getOutputStream()); 
+   BufferedReader consoleInput=new BufferedReader(new 
+InputStreamReader(System.in)); 
+   String clientMessage,serverMessage; 
+   while(true) { 
+    System.out.println("You(Client):"); 
+    clientMessage=consoleInput.readLine(); 
+    output.println(clientMessage); 
+    if(clientMessage.equalsIgnoreCase("exit")) { 
+     break; 
+    } 
+    serverMessage=input.readLine(); 
+    if(serverMessage.equalsIgnoreCase("exit")) { 
+     System.out.println("Server Disconnected"); 
+     break; 
+    } 
+    System.out.println("Server:" + serverMessage); 
+} 
+socket.close(); 
+} 
+catch(IOException e) { 
+System.out.println("Client Error:" + e.getMessage()); 
+} 
+} 
+}
