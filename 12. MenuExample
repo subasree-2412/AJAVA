@@ -1,0 +1,49 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class SimpleForm extends JFrame implements ActionListener {
+
+    private JTextField nameField, emailField;
+    private JButton submitButton;
+
+    public SimpleForm() {
+        setTitle("Simple Form");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        JLabel nameLabel = new JLabel("Name:");
+        JLabel emailLabel = new JLabel("Email:");
+
+        nameField = new JTextField(15);
+        emailField = new JTextField(15);
+        submitButton = new JButton("Submit");
+        submitButton.addActionListener(this);
+
+        setLayout(new GridLayout(3, 2, 5, 5));
+        add(nameLabel);
+        add(nameField);
+        add(emailLabel);
+        add(emailField);
+        add(new JLabel()); // Empty cell
+        add(submitButton);
+
+        setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String name = nameField.getText();
+        String email = emailField.getText();
+
+        JOptionPane.showMessageDialog(this,
+            "Name: " + name + "\nEmail: " + email,
+            "Form Data",
+            JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new SimpleForm());
+    }
+}
