@@ -1,23 +1,17 @@
 import java.net.*; 
 public class UDPSender { 
- 
- public static void main(String[] args) { 
-  try { 
-   DatagramSocket senderSocket=new DatagramSocket(); 
-   String message="Hello from UDP sender!"; 
-   byte[] sendBuffer=message.getBytes(); 
-   InetAddress receiverAddress=InetAddress.getByName("localHost"); 
-   DatagramPacket sendPacket=new 
-DatagramPacket(sendBuffer,sendBuffer.length,receiverAddress,9876); 
-   senderSocket.send(sendPacket); 
-   System.out.println("Message sent to receiver."); 
-   senderSocket.close(); 
-  } 
-  catch(Exception e) { 
-   System.out.println("Sender Error:" + e.getMessage()); 
-  } 
-   
- 
- } 
- 
-} 
+	public static void main(String[] args) { 
+		try { 
+			DatagramSocket senderSocket=new DatagramSocket(); 
+			String message="Hello from UDP sender!"; 
+			byte[] sendBuffer=message.getBytes(); 
+			InetAddress receiverAddress=InetAddress.getByName("localHost"); 
+			DatagramPacket sendPacket=new DatagramPacket(sendBuffer,sendBuffer.length,receiverAddress,9876); 
+			senderSocket.send(sendPacket); 
+			System.out.println("Message sent to receiver."); 
+			senderSocket.close(); 
+			} catch(Exception e) { 
+				System.out.println("Sender Error:" + e.getMessage()); 
+				} 
+		} 
+	} 
